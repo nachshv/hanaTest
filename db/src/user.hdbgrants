@@ -1,0 +1,30 @@
+{
+   "sflight_ups": {
+     "object_owner": {
+       "global_object_privileges" : [
+        {
+          "name" : "SFLIGHT_RS",
+          "type" : "REMOTE SOURCE",
+          "privileges_with_grant_option" : [ "CREATE VIRTUAL TABLE", "ALTER" ]
+        }
+      ],
+      "object_privileges" : [
+        {
+          "schema": "SYS",
+          "name" : "ADAPTERS",
+          "type" : "VIEW",
+          "privileges_with_grant_option" : [ "SELECT" ]
+        }
+      ]
+     },
+     "application_user": {
+       "global_object_privileges" : [
+        {
+          "name" : "SFLIGHT_RS",
+          "type" : "REMOTE SOURCE",
+          "privileges" : [ "CREATE VIRTUAL TABLE" ]
+        }
+      ]
+     }
+   } 
+}

@@ -4,15 +4,49 @@
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="PASSENGERS">
-    <resourceUri>PASSENGERS</resourceUri>
-  </DataSource>
   <DataSource id="FLIGHTRESERVATION">
     <resourceUri>FLIGHTRESERVATION</resourceUri>
   </DataSource>
+  <DataSource id="FlightData">
+    <resourceUri>FlightData</resourceUri>
+  </DataSource>
+  <DataSource id="PASSENGERS">
+    <resourceUri>PASSENGERS</resourceUri>
+  </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_1" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="PASSENGERS" multiJoinOrder="Outside In">
+    <viewAttributes>
+      <viewAttribute id="RESERVATIONID"/>
+      <viewAttribute id="CARRID"/>
+      <viewAttribute id="CONNID"/>
+      <viewAttribute id="SEAT"/>
+      <viewAttribute id="PRICE"/>
+      <viewAttribute id="PLANETYPE"/>
+      <viewAttribute id="PASSENGERID"/>
+      <viewAttribute hidden="true" id="JOIN$FLDATE$FLDATE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="FLIGHTRESERVATION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESERVATIONID" source="RESERVATIONID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CARRID" source="CARRID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONNID" source="CONNID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEAT" source="SEAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PASSENGERID" source="PASSENGERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$FLDATE$FLDATE" source="FLDATE"/>
+    </input>
+    <input node="FlightData">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE" source="PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANETYPE" source="PLANETYPE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CARRID" source="CARRID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONNID" source="CONNID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$FLDATE$FLDATE" source="FLDATE"/>
+    </input>
+    <joinAttribute name="CARRID"/>
+    <joinAttribute name="CONNID"/>
+    <joinAttribute name="JOIN$FLDATE$FLDATE"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1_2" cardinality="CN_N" joinType="inner" multiJoinNode="Join_1" multiJoinCentralTable="PASSENGERS" multiJoinOrder="Outside In">
     <viewAttributes>
       <viewAttribute id="PASSENGERID"/>
       <viewAttribute id="NAME"/>
@@ -23,7 +57,8 @@
       <viewAttribute id="CARRID"/>
       <viewAttribute id="CONNID"/>
       <viewAttribute id="SEAT"/>
-      <viewAttribute id="SEAT_1"/>
+      <viewAttribute id="PRICE"/>
+      <viewAttribute id="PLANETYPE"/>
     </viewAttributes>
     <calculatedViewAttributes/>
     <input node="PASSENGERS">
@@ -33,58 +68,63 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PASSPORT" source="PASSPORT"/>
     </input>
-    <input node="FLIGHTRESERVATION">
+    <input node="Join_1_1">
       <mapping xsi:type="Calculation:AttributeMapping" target="RESERVATIONID" source="RESERVATIONID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CARRID" source="CARRID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CONNID" source="CONNID"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="SEAT" source="SEAT"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="SEAT_1" source="SEAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRICE" source="PRICE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PLANETYPE" source="PLANETYPE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="PASSENGERID" source="PASSENGERID"/>
     </input>
     <joinAttribute name="PASSENGERID"/>
   </calculationView>
 </calculationViews>
-<logicalModel id="Join_1">
+<logicalModel id="Join_1_2">
   <attributes>
     <attribute id="PASSENGERID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PASSENGERID"/>
-      <keyMapping columnObjectName="Join_1" columnName="PASSENGERID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PASSENGERID"/>
     </attribute>
     <attribute id="NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="NAME"/>
-      <keyMapping columnObjectName="Join_1" columnName="NAME"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="NAME"/>
     </attribute>
     <attribute id="ADDRESS" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="ADDRESS"/>
-      <keyMapping columnObjectName="Join_1" columnName="ADDRESS"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="ADDRESS"/>
     </attribute>
     <attribute id="COUNTRY" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="COUNTRY"/>
-      <keyMapping columnObjectName="Join_1" columnName="COUNTRY"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="COUNTRY"/>
     </attribute>
     <attribute id="PASSPORT" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PASSPORT"/>
-      <keyMapping columnObjectName="Join_1" columnName="PASSPORT"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PASSPORT"/>
     </attribute>
     <attribute id="RESERVATIONID" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="RESERVATIONID"/>
-      <keyMapping columnObjectName="Join_1" columnName="RESERVATIONID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="RESERVATIONID"/>
     </attribute>
     <attribute id="CARRID" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CARRID"/>
-      <keyMapping columnObjectName="Join_1" columnName="CARRID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="CARRID"/>
     </attribute>
     <attribute id="CONNID" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CONNID"/>
-      <keyMapping columnObjectName="Join_1" columnName="CONNID"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="CONNID"/>
     </attribute>
     <attribute id="SEAT" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SEAT"/>
-      <keyMapping columnObjectName="Join_1" columnName="SEAT"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="SEAT"/>
     </attribute>
-    <attribute id="SEAT_1" order="10" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="SEAT_1"/>
-      <keyMapping columnObjectName="Join_1" columnName="SEAT_1"/>
+    <attribute id="PRICE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRICE"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PRICE"/>
+    </attribute>
+    <attribute id="PLANETYPE" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PLANETYPE"/>
+      <keyMapping columnObjectName="Join_1_2" columnName="PLANETYPE"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -102,14 +142,19 @@
       <upperLeftCorner x="81" y="254"/>
       <rectangleSize height="30" width="160"/>
     </shape>
-    <shape modelObjectName="PASSENGERS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="PASSENGERS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="20" y="30"/>
-      <rectangleSize width="247.3583984375"/>
+      <rectangleSize width="247"/>
     </shape>
-    <shape modelObjectName="FLIGHTRESERVATION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+    <shape modelObjectName="FLIGHTRESERVATION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
       <upperLeftCorner x="320" y="30"/>
-      <rectangleSize width="192.00390625"/>
+      <rectangleSize width="192"/>
+    </shape>
+  
+    <shape modelObjectName="FlightData" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput" multiJoinViewNodeName="Join_1">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="250"/>
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario> 
+</Calculation:scenario>    

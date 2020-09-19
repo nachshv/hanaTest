@@ -7,8 +7,23 @@ modules:
   path: db
   requires:
   - name: hdi_db
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+  - name: sflight_schema
+    group: SERVICE_REPLACEMENTS
+    properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+
 resources:
 - name: hdi_db
   type: com.sap.xs.hdi-container
   properties:
     hdi-container-name: ${service-name}
+
+- name: sflight_schema
+  parameters:
+    service-name: sflight_ups
+  properties:
+      the-service-name: ${service-name}
+  type: org.cloudfoundry.existing-service    
