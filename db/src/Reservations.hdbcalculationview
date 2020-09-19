@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Reservations" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Reservations"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="PASSENGERS">
+    <resourceUri>PASSENGERS</resourceUri>
+  </DataSource>
+  <DataSource id="FLIGHTRESERVATION">
+    <resourceUri>FLIGHTRESERVATION</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="PASSENGERID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="ADDRESS"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="PASSPORT"/>
+      <viewAttribute id="RESERVATIONID"/>
+      <viewAttribute id="CARRID"/>
+      <viewAttribute id="CONNID"/>
+      <viewAttribute id="SEAT"/>
+      <viewAttribute id="SEAT_1"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="PASSENGERS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PASSENGERID" source="PASSENGERID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ADDRESS" source="ADDRESS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PASSPORT" source="PASSPORT"/>
+    </input>
+    <input node="FLIGHTRESERVATION">
+      <mapping xsi:type="Calculation:AttributeMapping" target="RESERVATIONID" source="RESERVATIONID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CARRID" source="CARRID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONNID" source="CONNID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEAT" source="SEAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SEAT_1" source="SEAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PASSENGERID" source="PASSENGERID"/>
+    </input>
+    <joinAttribute name="PASSENGERID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="PASSENGERID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PASSENGERID"/>
+      <keyMapping columnObjectName="Join_1" columnName="PASSENGERID"/>
+    </attribute>
+    <attribute id="NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="NAME"/>
+    </attribute>
+    <attribute id="ADDRESS" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ADDRESS"/>
+      <keyMapping columnObjectName="Join_1" columnName="ADDRESS"/>
+    </attribute>
+    <attribute id="COUNTRY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="Join_1" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="PASSPORT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PASSPORT"/>
+      <keyMapping columnObjectName="Join_1" columnName="PASSPORT"/>
+    </attribute>
+    <attribute id="RESERVATIONID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RESERVATIONID"/>
+      <keyMapping columnObjectName="Join_1" columnName="RESERVATIONID"/>
+    </attribute>
+    <attribute id="CARRID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CARRID"/>
+      <keyMapping columnObjectName="Join_1" columnName="CARRID"/>
+    </attribute>
+    <attribute id="CONNID" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONNID"/>
+      <keyMapping columnObjectName="Join_1" columnName="CONNID"/>
+    </attribute>
+    <attribute id="SEAT" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEAT"/>
+      <keyMapping columnObjectName="Join_1" columnName="SEAT"/>
+    </attribute>
+    <attribute id="SEAT_1" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SEAT_1"/>
+      <keyMapping columnObjectName="Join_1" columnName="SEAT_1"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="81" y="254"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="PASSENGERS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="247.3583984375"/>
+    </shape>
+    <shape modelObjectName="FLIGHTRESERVATION" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="192.00390625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario> 
